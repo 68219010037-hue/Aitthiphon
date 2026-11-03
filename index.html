@@ -1,67 +1,139 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <title>แนะนำตัวเอง</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>อิทธิพล ต่อเติม | ประวัติส่วนตัว</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@500;600&family=Sarabun:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --court:#1747c9; --panel:#0f338f; --line:#f4f7ff; --ball:#ff7a1a; --ink:#f4f7ff; --muted:#bccaf3;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--court:#0d2468; --panel:#081649; --muted:#9fb1e6; color-scheme:dark;}
+}
+:root[data-theme="dark"]{--court:#0d2468; --panel:#081649; --muted:#9fb1e6; color-scheme:dark;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*{box-sizing:border-box;margin:0}
+body{background:var(--court);color:var(--ink);font-family:'Sarabun','Noto Sans Thai',sans-serif;font-size:18px;line-height:1.7}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ball);outline-offset:3px}
+main{max-width:980px;margin:0 auto;padding:0 20px 48px}
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #e6f2ff;
-            text-align: center;
-            padding: 30px;
-        }
+/* hero: the court */
+.hero{position:relative;padding:36px 0 28px}
+.court{width:100%;height:auto;display:block}
+.court *{fill:none;stroke:var(--line);stroke-width:3;stroke-linecap:round}
+.court .draw{stroke-dasharray:1800;stroke-dashoffset:1800;animation:draw 2.2s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.court .ball{fill:var(--ball);stroke:none}
+.hero-text{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:36px 8% 28px}
+.hero h1{font-family:'Mitr','Sarabun',sans-serif;font-weight:600;font-size:clamp(2rem,7.5vw,4.6rem);line-height:1.15}
+.hero p{max-width:30ch;color:var(--muted);margin-top:8px;font-size:clamp(.95rem,2.4vw,1.2rem)}
+.ball-badge{position:absolute;right:7%;top:50%;transform:translateY(-50%);width:clamp(84px,17vw,150px);aspect-ratio:1;border-radius:50%;background:var(--ball);color:#1a1209;display:grid;place-items:center;text-align:center;font-family:'Mitr',sans-serif;line-height:1.1;box-shadow:0 0 0 6px var(--court),0 0 0 9px var(--line)}
+.ball-badge b{display:block;font-size:clamp(1.8rem,6vw,3.4rem);font-weight:600}
+.ball-badge span{font-size:clamp(.7rem,2vw,1rem)}
 
-        .container {
-            background-color: white;
-            width: 60%;
-            margin: auto;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 0 10px gray;
-        }
+h2{font-family:'Mitr',sans-serif;font-weight:500;font-size:1.6rem;margin:44px 0 14px}
 
-        h1 {
-            color: #0066cc;
-        }
+/* spec sheet */
+.spec{background:var(--panel);border:3px solid var(--line);border-radius:6px;overflow:hidden}
+.spec div{display:grid;grid-template-columns:minmax(110px,32%) 1fr;border-top:2px solid color-mix(in srgb,var(--line) 35%,transparent)}
+.spec div:first-child{border-top:0}
+.spec dt,.spec dd{padding:12px 18px}
+.spec dt{color:var(--muted);border-right:2px solid color-mix(in srgb,var(--line) 35%,transparent)}
+.spec dd{font-weight:700}
+.spec{margin:0}
 
-        h2 {
-            color: #3399cc;
-        }
+/* education: the only real sequence */
+.path{list-style:none;padding:0 0 0 34px;position:relative}
+.path::before{content:"";position:absolute;left:11px;top:10px;bottom:10px;border-left:3px dashed var(--line)}
+.path li{position:relative;background:var(--panel);border:3px solid var(--line);border-radius:6px;padding:14px 18px;margin-bottom:16px}
+.path li::before{content:"";position:absolute;left:-34px;top:50%;width:22px;height:22px;margin-top:-11px;border-radius:50%;background:var(--court);border:3px solid var(--line)}
+.path li.now::before{background:var(--ball);border-color:var(--ball)}
+.path small{display:block;color:var(--muted)}
+.path strong{font-size:1.15rem}
 
-        p {
-            font-size: 18px;
-        }
-    </style>
+/* strengths: uneven pieces on the court */
+.skills{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.skill{background:var(--panel);border:3px solid var(--line);border-radius:6px;padding:18px}
+.skill .ic{font-size:2rem;line-height:1}
+.skill h3{font-family:'Mitr',sans-serif;font-weight:500;font-size:1.2rem;margin-top:8px}
+.skill p{color:var(--muted);font-size:.95rem}
+.s1{grid-column:span 4}.s2{grid-column:span 2;border-radius:50% 6px 6px 50%/50% 6px 6px 50%}.s3{grid-column:span 2}.s4{grid-column:span 4}
+.s2{display:flex;flex-direction:column;justify-content:center;padding-left:28px}
+.skill.hot{border-color:var(--ball)}
+footer{margin-top:48px;color:var(--muted);font-size:.9rem;text-align:center}
+
+@media (max-width:640px){
+  .ball-badge{display:none}
+  .hero-text{padding:20px 6%}
+  .skills{grid-template-columns:1fr}
+  .s1,.s2,.s3,.s4{grid-column:auto;border-radius:6px;padding-left:18px}
+  .spec div{grid-template-columns:1fr}
+  .spec dt{border-right:0;padding-bottom:0}
+}
+@media (prefers-reduced-motion:reduce){.court .draw{animation:none;stroke-dashoffset:0}}
+</style>
 </head>
-
 <body>
-
-    <div class="container">
-
-        <h1>ประวัติส่วนตัว</h1>
-
-        <h2>ชื่อ-นามสกุล</h2>
-        <p>ชื่อ: ....................................</p>
-        <p>นามสกุล: ....................................</p>
-
-        <h2>ประวัติการศึกษา</h2>
-        <p>ระดับประถมศึกษา : โรงเรียน................</p>
-        <p>ระดับมัธยมศึกษา : โรงเรียน................</p>
-        <p>ระดับปัจจุบัน : วิทยาลัย................</p>
-
-        <h2>ความสามารถพิเศษ</h2>
-        <p>1. ใช้คอมพิวเตอร์ได้</p>
-        <p>2. เขียนโปรแกรมเบื้องต้นได้</p>
-        <p>3. มีความคิดสร้างสรรค์</p>
-
-        <hr>
-
-        <p>ยินดีที่ได้รู้จักครับ 😊</p>
-
+<main>
+  <section class="hero" aria-label="แนะนำตัว">
+    <svg class="court" viewBox="0 0 800 400" role="img" aria-label="ลายเส้นสนามฟุตซอล">
+      <rect class="draw" x="10" y="10" width="780" height="380" rx="6"/>
+      <line class="draw" x1="400" y1="10" x2="400" y2="390"/>
+      <circle class="draw" cx="400" cy="200" r="62"/>
+      <path class="draw" d="M10 90 A110 110 0 0 1 10 310"/>
+      <path class="draw" d="M790 90 A110 110 0 0 0 790 310"/>
+      <rect class="draw" x="-2" y="165" width="12" height="70"/>
+      <rect class="draw" x="790" y="165" width="12" height="70"/>
+    </svg>
+    <div class="hero-text">
+      <h1>อิทธิพล<br>ต่อเติม</h1>
+      <p>นักเรียนวิทยาลัยเทคนิคสิงห์บุรี ชอบเกม ฟุตซอล เพลง และอุปกรณ์ไอที</p>
     </div>
+    <div class="ball-badge" aria-label="อายุ"><div><b id="age">16</b><span>ปี</span></div></div>
+  </section>
 
+  <h2>ข้อมูลส่วนตัว</h2>
+  <dl class="spec">
+    <div><dt>ชื่อ</dt><dd>อิทธิพล ต่อเติม</dd></div>
+    <div><dt>วันเกิด</dt><dd>26 ธันวาคม 2552</dd></div>
+    <div><dt>ส่วนสูง</dt><dd>180 เซนติเมตร</dd></div>
+    <div><dt>น้ำหนัก</dt><dd>65 กิโลกรัม</dd></div>
+  </dl>
+
+  <h2>ประวัติการศึกษา</h2>
+  <ol class="path">
+    <li><small>ระดับประถมศึกษาถึงมัธยมศึกษาตอนต้น</small><strong>โรงเรียนบางระจันวิทยา</strong></li>
+    <li class="now"><small>ปัจจุบัน</small><strong>วิทยาลัยเทคนิคสิงห์บุรี</strong></li>
+  </ol>
+
+  <h2>ความสามารถและสิ่งที่ชอบ</h2>
+  <div class="skills">
+    <article class="skill s1 hot"><div class="ic" aria-hidden="true">🎮</div><h3>เล่นเกมเก่ง</h3><p>ความสามารถพิเศษของผม</p></article>
+    <article class="skill s2"><div class="ic" aria-hidden="true">⚽</div><h3>ฟุตซอล</h3><p>ชอบเตะ</p></article>
+    <article class="skill s3"><div class="ic" aria-hidden="true">🎧</div><h3>ฟังเพลง</h3><p>ชอบฟังเพลง</p></article>
+    <article class="skill s4"><div class="ic" aria-hidden="true">🖥️</div><h3>อุปกรณ์ไอที</h3><p>ชอบอุปกรณ์ไอทีทุกชนิด</p></article>
+  </div>
+
+  <footer>ประวัติส่วนตัวของ อิทธิพล ต่อเติม</footer>
+</main>
+<script>
+(function(){
+  try{
+    var b=new Date(2009,11,26),n=new Date();
+    var a=n.getFullYear()-b.getFullYear();
+    if(n<new Date(n.getFullYear(),11,26))a--;
+    document.getElementById('age').textContent=a;
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
-
