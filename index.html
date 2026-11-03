@@ -1,56 +1,67 @@
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>หน้าเว็บของฉัน</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <title>แนะนำตัวเอง</title>
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f2ff;
+            text-align: center;
+            padding: 30px;
+        }
 
-    body {
-      font-family: "Sarabun", "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #333;
-    }
+        .container {
+            background-color: white;
+            width: 60%;
+            margin: auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px gray;
+        }
 
+        h1 {
+            color: #0066cc;
+        }
 
-    .card {
-      background: #fff;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      max-width: 400px;
-      text-align: center;
-    }
+        h2 {
+            color: #3399cc;
+        }
 
-
-    .card h1 { color: #764ba2; margin-bottom: 12px; }
-    .card p  { line-height: 1.6; margin-bottom: 20px; }
-
-
-    .btn {
-      background: #667eea;
-      color: #fff;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: transform 0.2s, background 0.2s;
-    }
-    .btn:hover { background: #5a67d8; transform: translateY(-2px); }
-  </style>
+        p {
+            font-size: 18px;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="card">
-    <h1>สวัสดีครับ</h1>
-    <p>นี่คือตัวอย่างการตกแต่งหน้าเว็บด้วย CSS</p>
-    <button class="btn">กดตรงนี้</button>
-  </div>
+
+    <div class="container">
+
+        <h1>ประวัติส่วนตัว</h1>
+
+        <h2>ชื่อ-นามสกุล</h2>
+        <p>ชื่อ: ....................................</p>
+        <p>นามสกุล: ....................................</p>
+
+        <h2>ประวัติการศึกษา</h2>
+        <p>ระดับประถมศึกษา : โรงเรียน................</p>
+        <p>ระดับมัธยมศึกษา : โรงเรียน................</p>
+        <p>ระดับปัจจุบัน : วิทยาลัย................</p>
+
+        <h2>ความสามารถพิเศษ</h2>
+        <p>1. ใช้คอมพิวเตอร์ได้</p>
+        <p>2. เขียนโปรแกรมเบื้องต้นได้</p>
+        <p>3. มีความคิดสร้างสรรค์</p>
+
+        <hr>
+
+        <p>ยินดีที่ได้รู้จักครับ 😊</p>
+
+    </div>
+
 </body>
 </html>
+
